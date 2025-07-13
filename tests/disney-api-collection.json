@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "fabe69fc-af82-462d-ac12-28b0e42c80d7",
-		"name": "Disney API",
+		"name": "disney-api-collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
