@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "fabe69fc-af82-462d-ac12-28b0e42c80d7",
+		"name": "Disney API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all characters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SETUP",
+							"const { code, status } = pm.response;",
+							"const personagens = pm.response.json().data;",
+							"",
+							"// TESTS",
+							"pm.test(\"Status code é 200\", function () {",
+							"    pm.expect(code).to.eql(200);",
+							"});",
+							"",
+							"pm.test('Status is OK', function () {",
+							"    pm.expect(status).to.eql('OK');",
+							"});",
+							"",
+							"pm.test(\"A resposta contém a propriedade 'data'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"data\");",
+							"});",
+							"",
+							"pm.test(\"Cada personagem possui a propriedade ID\", function () {",
+							"    personagens.forEach(personagem => {",
+							"        pm.expect(personagem).to.have.property(\"_id\");",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"O nome de cada personagem é uma string\", function () {",
+							"    personagens.forEach(personagem => {",
+							"        pm.expect(personagem.name).to.be.a('string');",
+							"    });",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.disneyapi.dev/character",
+					"protocol": "https",
+					"host": [
+						"api",
+						"disneyapi",
+						"dev"
+					],
+					"path": [
+						"character"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one character",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.disneyapi.dev/character/753",
+					"protocol": "https",
+					"host": [
+						"api",
+						"disneyapi",
+						"dev"
+					],
+					"path": [
+						"character",
+						"753"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter characters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.disneyapi.dev/character?name=Violetta",
+					"protocol": "https",
+					"host": [
+						"api",
+						"disneyapi",
+						"dev"
+					],
+					"path": [
+						"character"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Violetta"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
