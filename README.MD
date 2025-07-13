@@ -27,6 +27,3 @@ Simular um ambiente de entrega contínua, com testes automatizados sendo executa
 ---
 
 ## 📘 Extras
-
-- Adicione um badge de status da pipeline neste README.
-- Simule um Pull Request de outro colega e revise.
