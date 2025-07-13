@@ -24,7 +24,7 @@ jobs:
 
       - name: Rodar testes Postman
         run: |
-          newman run tests/disney-api-collection.json --environment tests/postman-environment.json
+          newman run tests/disney-api-collection.json
 
       - name: Resultado da execução
         if: failure()
