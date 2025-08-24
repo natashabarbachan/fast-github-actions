@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  schedule:
+    -cron: '0 */1 * * *'
+  workflow_dispatch:
 
 jobs:
   run-postman-tests:
@@ -29,3 +32,15 @@ jobs:
       - name: Resultado da execução
         if: failure()
         run: echo "❌ Alguns testes falharam. Corrija antes de fazer merge."
+
+      - name: Instalar o reporter HTML (opcional)
+        run: npm install -g newman-reporter-html
+        
+      - name: Executar testes com Newman
+        run: newman run tests/disney-api-collection.json --reporters cli,html --reporter-html-export relatorio.html
+      
+      - name: Salvar o relatório como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-newman
+          path: relatorio.html
