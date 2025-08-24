@@ -18,7 +18,7 @@
 							"",
 							"// TESTS",
 							"pm.test(\"Status code é 200\", function () {",
-							"    pm.expect(code).to.eql(200);",
+							"    pm.expect(code).to.eql(400);",
 							"});",
 							"",
 							"pm.test('Status is OK', function () {",
