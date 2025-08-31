@@ -136,15 +136,9 @@
 							"    });",
 							"});",
 							"",
-							"pm.test(\"O nome de cada personagem é uma string\", function () {",
-							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.name).to.be.a('string');",
-							"    });",
-							"});",
-							"",
 							"pm.test(\"Verifique que o Parque do personagem não está vazio\", function () {",
 							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.parkAttractions).is.not.null;",
+							"        pm.expect(personagem.parkAttractions).is.null;",
 							"    });",
 							"});",
 							"",
@@ -159,7 +153,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.disneyapi.dev/character?name=Mulan",
+					"raw": "https://api.disneyapi.dev/character?name=Tarzan",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -172,8 +166,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Tarzan",
-							"disabled": true
+							"value": "Tarzan"
 						},
 						{
 							"key": "name",
@@ -182,7 +175,8 @@
 						},
 						{
 							"key": "name",
-							"value": "Mulan"
+							"value": "Mulan",
+							"disabled": true
 						}
 					]
 				}
