@@ -138,7 +138,7 @@
 							"",
 							"pm.test(\"Verifique que o Parque do personagem não está vazio\", function () {",
 							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.parkAttractions).is.null;",
+							"        pm.expect(personagem.parkAttractions).is.not.null;",
 							"    });",
 							"});",
 							"",
@@ -153,7 +153,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.disneyapi.dev/character?name=Tarzan",
+					"raw": "https://api.disneyapi.dev/character?name=Mulan",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -166,7 +166,8 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Tarzan"
+							"value": "Tarzan",
+							"disabled": true
 						},
 						{
 							"key": "name",
@@ -175,8 +176,7 @@
 						},
 						{
 							"key": "name",
-							"value": "Mulan",
-							"disabled": true
+							"value": "Mulan"
 						}
 					]
 				}
