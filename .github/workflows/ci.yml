@@ -1,0 +1,43 @@
+name: CI - Testes Postman
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-postman-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar Newman
+        run: npm install -g newman
+
+      - name: Rodar testes Postman
+        run: |
+          newman run tests/disney-api-collection.json
+
+      - name: Resultado da execução
+        if: failure()
+        run: echo "❌ Alguns testes falharam. Corrija antes de fazer merge."
+
+      - name: Instalar o reporter HTML (opcional)
+        run: npm install -g newman-reporter-html
+        
+      - name: Executar testes com Newman
+        run: newman run tests/disney-api-collection.json --reporters cli,html --reporter-html-export relatorio.html
+      
+      - name: Salvar o relatório como artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-newman
+          path: relatorio.html

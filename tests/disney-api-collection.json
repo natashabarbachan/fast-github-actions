@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "fabe69fc-af82-462d-ac12-28b0e42c80d7",
+		"_postman_id": "3868aed9-4a8e-4a8b-a846-0e01ed1a9187",
 		"name": "disney-api-collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48048153"
 	},
 	"item": [
 		{
@@ -41,9 +42,21 @@
 							"        pm.expect(personagem.name).to.be.a('string');",
 							"    });",
 							"});",
+							"",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -88,11 +101,65 @@
 		},
 		{
 			"name": "Filter characters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SETUP",
+							"const { code, status } = pm.response;",
+							"const personagens = pm.response.json().data;",
+							"",
+							"// TESTS",
+							"pm.test(\"Status code é 200\", function () {",
+							"    pm.expect(code).to.eql(200);",
+							"});",
+							"",
+							"pm.test('Status is OK', function () {",
+							"    pm.expect(status).to.eql('OK');",
+							"});",
+							"",
+							"pm.test(\"A resposta contém a propriedade 'data'\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.have.property(\"data\");",
+							"});",
+							"",
+							"pm.test(\"Cada personagem possui a propriedade ID\", function () {",
+							"    personagens.forEach(personagem => {",
+							"        pm.expect(personagem).to.have.property(\"_id\");",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"O nome de cada personagem é uma string\", function () {",
+							"    personagens.forEach(personagem => {",
+							"        pm.expect(personagem.name).to.be.a('string');",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"O nome de cada personagem é uma string\", function () {",
+							"    personagens.forEach(personagem => {",
+							"        pm.expect(personagem.name).to.be.a('string');",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Verifique que o Parque do personagem não está vazio\", function () {",
+							"    personagens.forEach(personagem => {",
+							"        pm.expect(personagem.parkAttractions).is.not.null;",
+							"    });",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.disneyapi.dev/character?name=Violetta",
+					"raw": "https://api.disneyapi.dev/character?name=Mulan",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -105,7 +172,17 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Violetta"
+							"value": "Tarzan",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Mickey Mouse",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Mulan"
 						}
 					]
 				}
