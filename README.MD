@@ -7,13 +7,12 @@ Simular um ambiente de entrega contínua, com testes automatizados sendo executa
 
 ## 🔧 Instruções
 
-1. Faça um fork deste repositório.
-2. Clone o seu fork.
-3. Instale o Postman e Newman localmente (opcional, para rodar os testes antes do push).
-4. Modifique um dos testes em `tests/disney-api-collection.json` para **falhar propositalmente**.
-5. Faça um commit com a alteração.
-6. Suba para o GitHub (`git push`).
-7. Verifique a falha no GitHub Actions.
+1. Faça um clone deste repositório.
+2. Instale o Postman e Newman localmente (opcional, para rodar os testes antes do push).
+3. Modifique um dos testes em `tests/disney-api-collection.json` para **falhar propositalmente**.
+4. Faça um commit com a alteração.
+5. Suba para o GitHub (`git push`).
+6. Verifique a falha no GitHub Actions.
 
 ---
 
@@ -25,5 +24,3 @@ Simular um ambiente de entrega contínua, com testes automatizados sendo executa
 - Depois, corrija o teste e envie novamente para ver a pipeline passar com sucesso ✅.
 
 ---
-
-## 📘 Extras
