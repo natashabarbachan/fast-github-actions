@@ -22,19 +22,16 @@ jobs:
       - name: Instalar Newman
         run: npm install -g newman
 
-      - name: Rodar testes Postman
+      - name: Instalar o reporter HTML
+        run: npm install -g newman-reporter-html
+
+      - name: Rodar testes com Newman e gerar report HTML 
         run: |
-          newman run tests/disney-api-collection.json
+          newman run tests/disney-api-collection.json --reporters cli,html --reporter-html-export relatorio.html
 
       - name: Resultado da execução
         if: failure()
         run: echo "❌ Alguns testes falharam. Corrija antes de fazer merge."
-
-      - name: Instalar o reporter HTML (opcional)
-        run: npm install -g newman-reporter-html
-        
-      - name: Executar testes com Newman
-        run: newman run tests/disney-api-collection.json --reporters cli,html --reporter-html-export relatorio.html
       
       - name: Salvar o relatório como artefato
         uses: actions/upload-artifact@v4
