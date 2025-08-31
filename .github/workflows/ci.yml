@@ -27,10 +27,7 @@ jobs:
 
       - name: Rodar testes com Newman e gerar report HTML 
         run: |
-          newman run tests/disney-api-collection.json \
-          --reporters cli,html \
-          --reporter-html-export relatorio.html \
-          --suppress-exit-code
+          newman run tests/disney-api-collection.json --reporters cli,html --reporter-html-export relatorio.html
 
       - name: Resultado da execução
         if: failure()
