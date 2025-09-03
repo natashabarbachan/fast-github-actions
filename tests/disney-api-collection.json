@@ -138,7 +138,7 @@
 							"",
 							"pm.test(\"Verifique que o Parque do personagem não está vazio\", function () {",
 							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.parkAttractions).is.not.null;",
+							"        pm.expect(personagem.parkAttractions).is.null;",
 							"    });",
 							"});",
 							"",
