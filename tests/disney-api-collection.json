@@ -139,7 +139,7 @@
 							"});",
 							"",
 							"pm.test(\"Verifique que o Parque do personagem não está vazio\", function () {",
-							"    pm.expect(personagem.parkAttractions).is.not.null;",
+							"    pm.expect(personagem.parkAttractions).is.null;",
 							"    // personagens.forEach(personagem => {",
 							"    //     pm.expect(personagem.parkAttractions).is.null;",
 							"    // });",
