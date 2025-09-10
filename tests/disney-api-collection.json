@@ -108,7 +108,7 @@
 						"exec": [
 							"// SETUP",
 							"const { code, status } = pm.response;",
-							"const personagens = pm.response.json().data;",
+							"const personagem = pm.response.json().data;",
 							"",
 							"// TESTS",
 							"pm.test(\"Status code é 200\", function () {",
@@ -124,22 +124,25 @@
 							"    pm.expect(jsonData).to.have.property(\"data\");",
 							"});",
 							"",
-							"pm.test(\"Cada personagem possui a propriedade ID\", function () {",
-							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem).to.have.property(\"_id\");",
-							"    });",
+							"pm.test(\"O personagem possui a propriedade ID\", function () {",
+							"    pm.expect(personagem).to.have.property(\"_id\");",
+							"    // personagens.forEach(personagem => {",
+							"        // pm.expect(personagem).to.have.property(\"_id\");",
+							"    // });",
 							"});",
 							"",
 							"pm.test(\"O nome de cada personagem é uma string\", function () {",
-							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.name).to.be.a('string');",
-							"    });",
+							"    pm.expect(personagem.name).to.be.a('string');",
+							"    // personagens.forEach(personagem => {",
+							"    //     pm.expect(personagem.name).to.be.a('string');",
+							"    // });",
 							"});",
 							"",
 							"pm.test(\"Verifique que o Parque do personagem não está vazio\", function () {",
-							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.parkAttractions).is.null;",
-							"    });",
+							"    pm.expect(personagem.parkAttractions).is.not.null;",
+							"    // personagens.forEach(personagem => {",
+							"    //     pm.expect(personagem.parkAttractions).is.null;",
+							"    // });",
 							"});",
 							"",
 							""
@@ -153,7 +156,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.disneyapi.dev/character?name=Tarzan",
+					"raw": "https://api.disneyapi.dev/character/4703",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -161,12 +164,14 @@
 						"dev"
 					],
 					"path": [
-						"character"
+						"character",
+						"4703"
 					],
 					"query": [
 						{
 							"key": "name",
-							"value": "Tarzan"
+							"value": "Tarzan",
+							"disabled": true
 						},
 						{
 							"key": "name",
