@@ -19,7 +19,7 @@ Simular um ambiente de entrega contínua, com testes automatizados sendo executa
    git add .
    git commit -m "Descrição das alterações"
    ```
-6. Suba sua branch para o GitHub:  
+6. Suba sua branch para o GitHub :D  
    ```bash
    git push origin minha-branch
    ```
