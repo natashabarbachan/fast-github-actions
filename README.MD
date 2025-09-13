@@ -17,7 +17,7 @@ Simular um ambiente de entrega contínua, com testes automatizados sendo executa
 5. Faça um commit das suas alterações:  
    ```bash
    git add .
-   git commit -m "Descrição das alterações"
+   git commit -m "Descrição das alterações aqui"
    ```
 6. Suba sua branch para o GitHub :D  
    ```bash
