@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "3868aed9-4a8e-4a8b-a846-0e01ed1a9187",
+		"_postman_id": "bcc9bd9b-2005-4226-9929-71b65ba2fa42",
 		"name": "disney-api-collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "48048153"
+		"_exporter_id": "28607852",
+		"_collection_link": "https://lively-space-885579.postman.co/workspace/Team-Workspace~9a178454-46b6-4dfa-8632-4f01d8e8365b/collection/28607852-bcc9bd9b-2005-4226-9929-71b65ba2fa42?action=share&source=collection_link&creator=28607852"
 	},
 	"item": [
 		{
@@ -108,7 +109,7 @@
 						"exec": [
 							"// SETUP",
 							"const { code, status } = pm.response;",
-							"const personagens = pm.response.json().data;",
+							"const personagem = pm.response.json().data;",
 							"",
 							"// TESTS",
 							"pm.test(\"Status code é 200\", function () {",
@@ -124,22 +125,16 @@
 							"    pm.expect(jsonData).to.have.property(\"data\");",
 							"});",
 							"",
-							"pm.test(\"Cada personagem possui a propriedade ID\", function () {",
-							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem).to.have.property(\"_id\");",
-							"    });",
+							"pm.test(\"O personagem possui a propriedade ID\", function () {",
+							"    pm.expect(personagem).to.have.property(\"_id\");",
 							"});",
 							"",
-							"pm.test(\"O nome de cada personagem é uma string\", function () {",
-							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.name).to.be.a('string');",
-							"    });",
+							"pm.test(\"O nome do personagem é uma string\", function () {",
+							"    pm.expect(personagem.name).to.be.a('string');",
 							"});",
 							"",
-							"pm.test(\"Verifique que o Parque do personagem não está vazio\", function () {",
-							"    personagens.forEach(personagem => {",
-							"        pm.expect(personagem.parkAttractions).is.null;",
-							"    });",
+							"pm.test(\"Verifique que os filmes do personagem não está vazio\", function () {",
+							"    pm.expect(personagem.films).is.empty;",
 							"});",
 							"",
 							""
@@ -153,7 +148,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.disneyapi.dev/character?name=Tarzan",
+					"raw": "https://api.disneyapi.dev/character?name=Troy Bolton",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -166,7 +161,8 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Tarzan"
+							"value": "Tarzan",
+							"disabled": true
 						},
 						{
 							"key": "name",
@@ -175,8 +171,7 @@
 						},
 						{
 							"key": "name",
-							"value": "Mulan",
-							"disabled": true
+							"value": "Troy Bolton"
 						}
 					]
 				}
