@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4bf12324-ad91-49df-ba5f-407e0ea68c45",
+		"_postman_id": "2c1b0dd0-bd39-4586-8706-254a1465629f",
 		"name": "disney-api-collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "48458018",
-		"_collection_link": "https://mmms-8391aef1-7025265.postman.co/workspace/b88b9d50-8aaf-4e4a-8216-24cdb29678c7/collection/48458018-4bf12324-ad91-49df-ba5f-407e0ea68c45?action=share&source=collection_link&creator=48458018"
+		"_exporter_id": "1284441"
 	},
 	"item": [
 		{
@@ -64,39 +63,61 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://api.disneyapi.dev/character",
-					"protocol": "https",
-					"host": [
-						"api",
-						"disneyapi",
-						"dev"
-					],
-					"path": [
-						"character"
-					]
-				}
+				"url": "https://api.disneyapi.dev/character"
 			},
 			"response": []
 		},
 		{
 			"name": "Get one character",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SETUP",
+							"const { code, status } = pm.response;",
+							"const personagens = pm.response.json().data;",
+							"",
+							"// TESTS",
+							"pm.test(\"Status code é 200\", function () {",
+							"    pm.expect(code).to.eql(200);",
+							"});",
+							"",
+							"pm.test(\"Status text é OK\", function () {",
+							"    pm.expect(pm.response.status).to.eql(\"OK\");",
+							"});",
+							"    ",
+							"pm.test(\"O personagem é Donald Duck\", function () {",
+							"    pm.expect(personagens.name).to.eql(\"Donald Duck\");",
+							"});",
+							"",
+							"pm.test(\"Pinocchio (2022 film) está presente no array films\", function() {",
+							"   pm.expect(personagens.films).to.include(\"Pinocchio (2022 film)\");",
+							"})",
+							"",
+							"pm.test(\"Verificar atributo enemies está vazio\", function() {",
+							"    pm.expect(personagens.enemies).is.empty;",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://api.disneyapi.dev/character/753",
-					"protocol": "https",
-					"host": [
-						"api",
-						"disneyapi",
-						"dev"
-					],
-					"path": [
-						"character",
-						"753"
-					]
-				}
+				"url": "https://api.disneyapi.dev/character/1947"
 			},
 			"response": []
 		},
