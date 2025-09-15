@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "2c1b0dd0-bd39-4586-8706-254a1465629f",
+		"_postman_id": "bcc9bd9b-2005-4226-9929-71b65ba2fa42",
 		"name": "disney-api-collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "1284441"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28607852",
+		"_collection_link": "https://lively-space-885579.postman.co/workspace/Team-Workspace~9a178454-46b6-4dfa-8632-4f01d8e8365b/collection/28607852-bcc9bd9b-2005-4226-9929-71b65ba2fa42?action=share&source=collection_link&creator=28607852"
 	},
 	"item": [
 		{
@@ -63,61 +64,39 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "https://api.disneyapi.dev/character"
+				"url": {
+					"raw": "https://api.disneyapi.dev/character",
+					"protocol": "https",
+					"host": [
+						"api",
+						"disneyapi",
+						"dev"
+					],
+					"path": [
+						"character"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Get one character",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"// SETUP",
-							"const { code, status } = pm.response;",
-							"const personagens = pm.response.json().data;",
-							"",
-							"// TESTS",
-							"pm.test(\"Status code é 200\", function () {",
-							"    pm.expect(code).to.eql(200);",
-							"});",
-							"",
-							"pm.test(\"Status text é OK\", function () {",
-							"    pm.expect(pm.response.status).to.eql(\"OK\");",
-							"});",
-							"    ",
-							"pm.test(\"O personagem é Donald Duck\", function () {",
-							"    pm.expect(personagens.name).to.eql(\"Donald Duck\");",
-							"});",
-							"",
-							"pm.test(\"Pinocchio (2022 film) está presente no array films\", function() {",
-							"   pm.expect(personagens.films).to.include(\"Pinocchio (2022 film)\");",
-							"})",
-							"",
-							"pm.test(\"Verificar atributo enemies está vazio\", function() {",
-							"    pm.expect(personagens.enemies).is.empty;",
-							"})"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "https://api.disneyapi.dev/character/1947"
+				"url": {
+					"raw": "https://api.disneyapi.dev/character/753",
+					"protocol": "https",
+					"host": [
+						"api",
+						"disneyapi",
+						"dev"
+					],
+					"path": [
+						"character",
+						"753"
+					]
+				}
 			},
 			"response": []
 		},
