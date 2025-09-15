@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "bcc9bd9b-2005-4226-9929-71b65ba2fa42",
+		"_postman_id": "4bf12324-ad91-49df-ba5f-407e0ea68c45",
 		"name": "disney-api-collection",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "28607852",
-		"_collection_link": "https://lively-space-885579.postman.co/workspace/Team-Workspace~9a178454-46b6-4dfa-8632-4f01d8e8365b/collection/28607852-bcc9bd9b-2005-4226-9929-71b65ba2fa42?action=share&source=collection_link&creator=28607852"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "48458018",
+		"_collection_link": "https://mmms-8391aef1-7025265.postman.co/workspace/b88b9d50-8aaf-4e4a-8216-24cdb29678c7/collection/48458018-4bf12324-ad91-49df-ba5f-407e0ea68c45?action=share&source=collection_link&creator=48458018"
 	},
 	"item": [
 		{
@@ -175,6 +175,52 @@
 						}
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Donald Duck info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SETUP",
+							"const { code, status } = pm.response;",
+							"const personagem = pm.response.json().data;",
+							"",
+							"// TESTS",
+							"pm.test(\"Status code é 200\", function () {",
+							"    pm.expect(code).to.eql(200);",
+							"});",
+							"",
+							"pm.test('Status is OK', function () {",
+							"    pm.expect(status).to.eql('OK');",
+							"});",
+							"",
+							"pm.test('The returned name is Donald Duck', function () {",
+							"    pm.expect(personagem.name).to.eql('Donald Duck');",
+							"});",
+							"",
+							"pm.test('The Pinocchio movie is present in films', function () {",
+							"    pm.expect(personagem.films).to.include('Pinocchio (2022 film)');",
+							"});",
+							"",
+							"pm.test('The character does not have enemies', function () {",
+							"    pm.expect(personagem.enemies).to.be.empty;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://api.disneyapi.dev/character/1947"
 			},
 			"response": []
 		}
