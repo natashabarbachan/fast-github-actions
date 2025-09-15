@@ -134,7 +134,7 @@
 							"});",
 							"",
 							"pm.test(\"Verifique que os filmes do personagem não está vazio\", function () {",
-							"    pm.expect(personagem.films).is.empty;",
+							"    pm.expect(personagem.films).is.not.empty;",
 							"});",
 							"",
 							""
