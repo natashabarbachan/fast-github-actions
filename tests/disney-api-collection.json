@@ -142,35 +142,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "https://api.disneyapi.dev/character/1947",
-					"protocol": "https",
-					"host": [
-						"api",
-						"disneyapi",
-						"dev"
-					],
-					"path": [
-						"character"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "Tarzan",
-							"disabled": true
-						},
-						{
-							"key": "name",
-							"value": "Mickey Mouse",
-							"disabled": true
-						},
-						{
-							"key": "name",
-							"value": "Troy Bolton",
-							"disabled": true
-						}
-					]
-				}
+				"url": "https://api.disneyapi.dev/character/1947"
 			},
 			"response": []
 		}
