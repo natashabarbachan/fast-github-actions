@@ -177,6 +177,62 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Class Project Donald Duck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SETUP",
+							"const { code, status } = pm.response;",
+							"const personagem = pm.response.json().data;",
+							"",
+							"// TESTS",
+							"pm.test(\"Status code é 200\", function () {",
+							"    pm.expect(code).to.eql(200);",
+							"});",
+							"",
+							"pm.test('Status is OK', function () {",
+							"    pm.expect(status).to.eql('OK');",
+							"});",
+							"",
+							"pm.test(\"O nome do personagem é Donald Duck\", function () {",
+							"    pm.expect(personagem.name).to.eql('Donald Duck');",
+							"});",
+							"",
+							"pm.test(\"O filme Pinocchio (2022 film) esta na lista de filmes\", function () {",
+							"    pm.expect(personagem.films).contain('Pinocchio (2022 film)');",
+							"});",
+							"",
+							"pm.test(\"A lista de inimigos do personagem esta vazia\", function () {",
+							"    pm.expect(personagem.enemies).is.empty;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.disneyapi.dev/character/1947",
+					"protocol": "https",
+					"host": [
+						"api",
+						"disneyapi",
+						"dev"
+					],
+					"path": [
+						"character",
+						"1947"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
