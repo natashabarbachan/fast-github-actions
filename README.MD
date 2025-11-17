@@ -7,7 +7,7 @@ Simular um ambiente de entrega contínua, com testes automatizados sendo executa
 
 ## 🔧 Instruções
 
-1. Faça um clone deste repositório.  
+1. Faça um fork deste repositório.  
 2. Crie uma branch nova a partir da `main` para realizar suas alterações:  
    ```bash
    git checkout -b minha-branch
