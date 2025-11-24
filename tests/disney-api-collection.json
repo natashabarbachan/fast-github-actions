@@ -177,6 +177,52 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Check Donald Duck info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// SETUP",
+							"const { code, status } = pm.response;",
+							"const personagem = pm.response.json().data;",
+							"",
+							"// TESTS",
+							"pm.test(\"Status code é 200\", function () {",
+							"    pm.expect(code).to.eql(200);",
+							"});",
+							"",
+							"pm.test('Status is OK', function () {",
+							"    pm.expect(status).to.eql('OK');",
+							"});",
+							"",
+							"pm.test('The returned name is Donald Duck', function () {",
+							"    pm.expect(personagem.name).to.eql('Donald Duck');",
+							"});",
+							"",
+							"pm.test('The Pinocchio movie is present in films', function () {",
+							"    pm.expect(personagem.films).to.include('Pinocchio (2022 film)');",
+							"});",
+							"",
+							"pm.test('The character does not have enemies', function () {",
+							"    pm.expect(personagem.enemies).to.be.empty;",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://api.disneyapi.dev/character/1947"
+			},
+			"response": []
 		}
 	]
 }
