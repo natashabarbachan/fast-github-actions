@@ -133,7 +133,7 @@
 							"    pm.expect(personagem.name).to.be.a('string');",
 							"});",
 							"",
-							"pm.test(\"Verifique que os filmes do personagem não está vazio\", function () {",
+							"pm.test(\"Verifique que os filmes do personagem Troy não está vazio\", function () {",
 							"    pm.expect(personagem.films).is.not.empty;",
 							"});",
 							"",
