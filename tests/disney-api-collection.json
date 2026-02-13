@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "bcc9bd9b-2005-4226-9929-71b65ba2fa42",
+		"_postman_id": "ca84bca2-e323-4db3-b7d9-d131d13ea899",
 		"name": "disney-api-collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "28607852",
-		"_collection_link": "https://lively-space-885579.postman.co/workspace/Team-Workspace~9a178454-46b6-4dfa-8632-4f01d8e8365b/collection/28607852-bcc9bd9b-2005-4226-9929-71b65ba2fa42?action=share&source=collection_link&creator=28607852"
+		"_exporter_id": "20864591"
 	},
 	"item": [
 		{
@@ -81,11 +80,44 @@
 		},
 		{
 			"name": "Get one character",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const { code, status } = pm.response;",
+							"const personagem = pm.response.json().data;",
+							"",
+							"pm.test(\"Status code é 200\", function () {",
+							"    pm.expect(code).to.eql(200);",
+							"});",
+							"",
+							"pm.test('Status is OK', function () {",
+							"    pm.expect(status).to.eql('OK');",
+							"});",
+							"",
+							"pm.test(\"O nome do personagem é Donald Duck\", function () {",
+							"    pm.expect(personagem.name).to.eql('Donald Duck');",
+							"});",
+							"",
+							"pm.test(\"O nome do personagem esta no filme Pinocchio (2022 film)\", function () {",
+							"    pm.expect(personagem.films).contains('Pinocchio (2022 film)');",
+							"});",
+							"",
+							"pm.test(\"Verifique que os inimigos do personagem está vazio\", function () {",
+							"    pm.expect(personagem.enemies).is.empty;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.disneyapi.dev/character/753",
+					"raw": "https://api.disneyapi.dev/character/1947",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -94,7 +126,7 @@
 					],
 					"path": [
 						"character",
-						"753"
+						"1947"
 					]
 				}
 			},
